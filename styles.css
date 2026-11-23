@@ -105,23 +105,29 @@ a:focus-visible {
 .scene-layer img { width: 100%; height: 100%; object-fit: cover; object-position: var(--photo-position, 60%) center; }
 .scene-layer::after { content: ""; position: absolute; inset: 0; }
 .cover-layer::after {
-  background:
-    linear-gradient(180deg, rgb(8 16 20 / 0.5), transparent 24%, transparent 66%, rgb(8 16 20 / 0.62)),
-    linear-gradient(90deg, rgb(8 16 20 / 0.26), transparent 60%);
+  background: linear-gradient(180deg, rgb(8 16 20 / 0.54), transparent 18%);
 }
-.cover-layer img { object-position: 50% 84%; }
-.cover-layout { display: grid; min-height: calc(100svh - var(--header-height)); align-items: end; padding-block: 80px clamp(92px, 16vh, 164px); }
-.cover-copy { position: relative; isolation: isolate; width: fit-content; max-width: 100%; }
+.cover-layer img { object-position: 50% 88%; }
+.cover-layout {
+  display: grid;
+  min-height: calc(100svh - var(--header-height));
+  align-items: start;
+  padding-block: clamp(96px, 19svh, 200px) 24px;
+}
+.cover-copy {
+  position: relative;
+  isolation: isolate;
+  width: fit-content;
+  max-width: 100%;
+  text-shadow: 0 1px 6px rgb(8 16 20 / 0.9);
+}
 .cover-copy::before {
   content: "";
   position: absolute;
   z-index: -1;
-  inset: -80px -100px -64px -112px;
+  inset: -32px -40px -32px -40px;
   pointer-events: none;
-  background: rgb(12 22 28 / 0.25);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  mask-image: linear-gradient(90deg, transparent, #000 16%, #000 76%, transparent), linear-gradient(180deg, transparent, #000 25%, #000 79%, transparent); mask-composite: intersect;
+  background: radial-gradient(ellipse at 42% 50%, rgb(8 16 20 / 0.74), rgb(8 16 20 / 0.34) 57%, transparent 80%);
 }
 .cover h1 { font: 700 clamp(42px, 5.6vw, 76px)/1.15 var(--font-display); text-wrap: balance; }
 .cover-copy > p { max-width: 26em; margin-top: 18px; color: var(--scene-muted); font-size: 16px; line-height: 1.75; }
@@ -453,12 +459,9 @@ a:focus-visible {
   .wordmark { font-size: 18px; letter-spacing: 0.1em; }
   .rules-button { font-size: 13px; }
   .scene-layer img { object-position: var(--photo-position, 55%) center; }
-  .cover-layer::after {
-    background: linear-gradient(180deg, rgb(8 16 20 / 0.62), transparent 24%, rgb(8 16 20 / 0.05) 43%, rgb(8 16 20 / 0.83));
-  }
   .cover-layer img { object-position: 48% 58%; }
-  .cover-layout { padding: 72px 4px clamp(54px, 10svh, 96px); }
-  .cover-copy::before { inset: -32px -6px -32px -10px; mask-image: radial-gradient(ellipse 86% 83% at 35% 54%, #000 25%, transparent 85%); mask-composite: add; }
+  .cover-layout { padding: clamp(96px, 22svh, 192px) 4px 24px; }
+  .cover-copy::before { inset: -28px -16px; }
   .cover h1 { font-size: clamp(30px, 8vw, 44px); }
   .cover-copy > p { margin-top: 10px; font-size: 15px; line-height: 1.6; }
   .cover-actions { margin-top: 12px; gap: 6px 12px; }
