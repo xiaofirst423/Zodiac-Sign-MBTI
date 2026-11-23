@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#17252c">
+    <meta name="description" content="南门外那家店还亮着灯。走过八幕小故事，看看窗外的天气和手边的一碟点心。">
+    <title>窗边还有个空位 · 南门外</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="styles.css">
+    <script src="data.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body data-view="cover">
+    <header class="site-header page-width">
+      <p class="wordmark">南门外</p>
+      <div class="rules-control" id="rules-control">
+        <button type="button" class="button button-quiet rules-button" id="rules-btn" aria-expanded="false" aria-controls="rules-note">玩法</button>
+        <div class="rules-popover" id="rules-note" hidden>
+          <p>选一个星座，走完八幕。你的选择会影响窗外的天气、桌上的点心和故事的最后一句。</p>
+          <p>故事设定，供娱乐。</p>
+        </div>
+      </div>
+    </header>
+
+    <main id="app">
+      <section class="view cover" id="view-cover" aria-labelledby="cover-title">
+        <div class="scene-layer cover-layer">
+          <img src="assets/scenes/late-autumn-focus.webp" alt="深秋的街角，窗灯映出店里清晰的桌椅，路人从模糊的近景走过" width="1672" height="941" fetchpriority="high" decoding="async">
+        </div>
+        <div class="cover-layout page-width">
+          <div class="cover-copy">
+            <h1 id="cover-title" tabindex="-1">窗边还有个空位</h1>
+            <p>吃完饭，我往南门走。转过街角，那家店的灯还开着。</p>
+            <div class="cover-actions">
+              <button type="button" class="button cover-entrance" id="start-btn">进店坐一会儿 <span class="action-arrow" aria-hidden="true">↗</span></button>
+              <span class="cover-duration">约 2 分钟</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <nav class="journey page-width" id="journey" aria-label="故事导航" hidden>
+        <ol class="journey-path" id="journey-path"></ol>
+        <p class="chapter-count" id="chapter-count" hidden></p>
+      </nav>
+
+      <section class="view setup page-width" id="view-zodiac" aria-labelledby="zodiac-title" hidden>
+        <div class="scene-layer setup-layer zodiac-layer">
+          <img id="zodiac-scene" alt="" width="1672" height="941" decoding="async">
+        </div>
+        <div class="setup-heading">
+          <h2 id="zodiac-title" tabindex="-1">在星图上找找你</h2>
+          <p>进门先看星图。你的星座给窗外定个天气底色。</p>
+        </div>
+        <div class="zodiac-grid" id="zodiac-grid" role="group" aria-labelledby="zodiac-title"></div>
+      </section>
+
+      <section class="view quiz" id="view-quiz" aria-labelledby="question-title" hidden>
+        <div class="scene-layer story-layer">
+          <img id="story-scene" alt="" width="1440" height="960" decoding="async">
+        </div>
+        <div class="story-spread page-width">
+          <div class="story-copy">
+            <p class="story-location" id="chapter-name"></p>
+            <h2 id="question-title" tabindex="-1"></h2>
+            <div class="story-bridge" id="story-bridge" hidden></div>
+            <p class="story-prompt" id="story-prompt"></p>
+          </div>
+          <div class="question-panel">
+            <h3 id="question-prompt"></h3>
+            <div class="option-list" id="option-list" role="group" aria-labelledby="question-prompt"></div>
+            <button type="button" class="button button-quiet previous-button" id="previous-btn" hidden><span aria-hidden="true">←</span> 上一幕</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="view result" id="view-result" aria-labelledby="result-weather" hidden>
+        <div class="scene-layer result-layer">
+          <img id="result-scene" alt="" width="1440" height="960" decoding="async">
+        </div>
+        <div class="result-board page-width">
+          <div class="result-sill" aria-hidden="true"></div>
+          <div class="result-plate"><img id="result-plate" alt="" decoding="async"></div>
+          <div class="result-annotation weather-annotation">
+            <span class="callout-leader" aria-hidden="true"><i></i></span>
+            <h2 class="annotation-label" id="result-weather" tabindex="-1"></h2>
+            <p id="result-scene-note"></p>
+          </div>
+          <div class="result-annotation food-annotation">
+            <span class="callout-leader" aria-hidden="true"><i></i></span>
+            <p id="result-food-note"></p>
+          </div>
+          <div class="result-outro">
+            <p class="result-verdict" id="result-verdict"></p>
+            <p class="result-note">故事设定，供娱乐。</p>
+            <div class="result-actions">
+              <button type="button" class="button button-quiet" id="result-back-btn"><span aria-hidden="true">←</span> 上一幕</button>
+              <button type="button" class="button window-button" id="restart-btn">再来坐坐 <span class="action-arrow" aria-hidden="true">↗</span></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <noscript><p class="noscript-note page-width">请开启 JavaScript，继续窗边的故事。</p></noscript>
+    </main>
+
+  </body>
+</html>
