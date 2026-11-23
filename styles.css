@@ -109,6 +109,7 @@ a:focus-visible {
     linear-gradient(180deg, rgb(8 16 20 / 0.5), transparent 24%, transparent 66%, rgb(8 16 20 / 0.62)),
     linear-gradient(90deg, rgb(8 16 20 / 0.26), transparent 60%);
 }
+.cover-layer img { object-position: 50% 84%; }
 .cover-layout { display: grid; min-height: calc(100svh - var(--header-height)); align-items: end; padding-block: 80px clamp(92px, 16vh, 164px); }
 .cover-copy { position: relative; isolation: isolate; width: fit-content; max-width: 100%; }
 .cover-copy::before {
@@ -305,7 +306,7 @@ a:focus-visible {
 
 .result-layer::after {
   background:
-    linear-gradient(180deg, rgb(8 17 22 / 0.57), transparent 19%, transparent 43%, rgb(8 17 22 / 0.71)),
+    linear-gradient(180deg, rgb(8 17 22 / 0.57), transparent 25%, transparent 49%, rgb(8 17 22 / 0.72)),
     linear-gradient(90deg, rgb(8 17 22 / 0.17), transparent 57%, rgb(8 17 22 / 0.14));
 }
 .result-board {
@@ -314,19 +315,25 @@ a:focus-visible {
   display: grid;
   min-height: calc(100svh - var(--header-height));
   grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.8fr) minmax(0, 0.74fr);
-  grid-template-rows: 1fr auto;
-  grid-template-areas: ". . weather" "outro plate food";
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: ". . weather" ". serving serving" "outro outro outro";
   align-items: end;
-  gap: 24px 36px;
-  padding-block: clamp(112px, 18vh, 196px) clamp(60px, 12vh, 112px);
+  gap: 18px 36px;
+  padding-block: clamp(76px, 12svh, 140px) clamp(22px, 4svh, 40px);
 }
 .result-outro, .result-annotation { position: relative; min-width: 0; isolation: isolate; }
+.result-serving {
+  display: grid;
+  grid-area: serving;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 0.74fr);
+  align-items: center;
+  gap: 36px;
+  margin-top: clamp(34px, 9svh, 84px);
+}
 .result-plate {
   position: relative;
   z-index: 1;
-  grid-area: plate;
   justify-self: end;
-  align-self: end;
   width: fit-content;
   max-width: 100%;
 }
@@ -373,8 +380,8 @@ a:focus-visible {
 }
 .result-annotation { color: var(--scene-muted); font-size: 15px; line-height: 1.7; text-shadow: 0 1px 4px rgb(4 13 17 / 0.84); }
 .result-annotation::before { inset: -16px -12px; background: rgb(12 22 28 / 0.4); filter: blur(24px); }
-.weather-annotation { grid-area: weather; align-self: end; }
-.food-annotation { z-index: 1; grid-area: food; align-self: end; margin-bottom: 20px; }
+.weather-annotation { grid-area: weather; }
+.food-annotation { z-index: 1; }
 .food-annotation::before { inset-inline-start: 0; }
 .annotation-label { margin-bottom: 4px; color: var(--scene-text); font-size: 14px; font-weight: 650; font-variant-numeric: tabular-nums; }
 .callout-leader {
@@ -405,9 +412,20 @@ a:focus-visible {
   font: 600 clamp(18px, 1.5vw, 22px)/1.65 var(--font-display);
   text-wrap: pretty;
 }
-.result-note { margin-top: 12px; color: var(--scene-muted); font-size: 12px; }
-.result-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 20px; }
-.result-actions .button-quiet { border-color: var(--scene-line); }
+.result-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px; margin-bottom: 8px; }
+.result-note { color: var(--scene-muted); font-size: 12px; }
+.result-actions { display: flex; align-items: center; gap: 6px; margin-inline-start: auto; }
+.result-actions .button {
+  gap: 5px;
+  padding: 6px 10px;
+  border-color: var(--scene-line);
+  background: rgb(13 22 27 / 0.3);
+  color: var(--scene-muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+.result-actions .action-arrow { font-size: 14px; }
+.result-restart { border-radius: 10px; }
 
 .noscript-note { padding-block: 16px; }
 
@@ -418,6 +436,7 @@ a:focus-visible {
   .journey-link:hover,
   .zodiac-tile:hover,
   .option-choice[aria-pressed="false"]:hover { background: var(--accent-soft); }
+  .result-actions .button:hover { background: rgb(13 22 27 / 0.58); }
 }
 
 @media (max-width: 1080px) {
@@ -426,6 +445,7 @@ a:focus-visible {
   .zodiac-grid { gap: 8px 16px; }
   .story-spread { gap: 56px; }
   .result-board { gap: 20px 24px; }
+  .result-serving { gap: 24px; }
 }
 
 @media (max-width: 767px) {
@@ -436,7 +456,7 @@ a:focus-visible {
   .cover-layer::after {
     background: linear-gradient(180deg, rgb(8 16 20 / 0.62), transparent 24%, rgb(8 16 20 / 0.05) 43%, rgb(8 16 20 / 0.83));
   }
-  .cover-layer img { object-position: 46% center; }
+  .cover-layer img { object-position: 48% 58%; }
   .cover-layout { padding: 72px 4px clamp(54px, 10svh, 96px); }
   .cover-copy::before { inset: -32px -6px -32px -10px; mask-image: radial-gradient(ellipse 86% 83% at 35% 54%, #000 25%, transparent 85%); mask-composite: add; }
   .cover h1 { font-size: clamp(30px, 8vw, 44px); }
@@ -462,10 +482,11 @@ a:focus-visible {
     background: linear-gradient(180deg, rgb(8 17 22 / 0.72), rgb(8 17 22 / 0.42) 24%, rgb(8 17 22 / 0.68) 56%, rgb(8 17 22 / 0.93));
   }
   .story-spread {
-    min-height: 0;
+    min-height: calc(100svh - var(--header-height) - var(--hit) - 2px);
     grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
     align-items: start;
-    gap: 16px;
+    gap: clamp(32px, 6svh, 54px);
     padding: clamp(34px, 7svh, 74px) 4px 24px;
   }
   .story-location { gap: 6px; margin-bottom: 5px; font-size: 12px; }
@@ -477,22 +498,20 @@ a:focus-visible {
   .story-bridge, .story-bridge[hidden] + .story-prompt { margin-top: 9px; }
   .story-prompt { margin-top: 6px; font-size: 15px; }
   .question-panel h3 { margin-bottom: 8px; font-size: 19px; line-height: 1.35; }
+  .question-panel { align-self: end; }
   .question-panel::before { inset: -16px -6px -16px; }
   .option-list { gap: 6px; }
   .option-choice { min-height: 48px; grid-template-columns: 22px minmax(0, 1fr); gap: 8px; padding: 7px 9px; font-size: 15px; }
   .option-letter { width: 22px; height: 22px; font-size: 11px; }
   .previous-button { margin-top: 6px; padding-inline: 8px; font-size: 13px; }
   .result-board {
-    min-height: 0;
-    grid-template-columns: minmax(0, 0.84fr) minmax(0, 1fr);
-    grid-template-rows: auto;
-    grid-template-areas: "weather weather" "plate food" "outro outro";
-    align-items: end;
-    gap: 16px 14px;
-    padding: clamp(82px, 16svh, 164px) 4px 28px;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "weather" "serving" "outro";
+    gap: 14px;
+    padding: clamp(52px, 11svh, 98px) 4px max(16px, env(safe-area-inset-bottom));
   }
+  .result-serving { grid-template-columns: minmax(0, 0.84fr) minmax(0, 1fr); gap: 14px; }
   .weather-annotation { width: min(calc(100% - 40px), 350px); justify-self: end; }
-  .food-annotation { align-self: center; margin-bottom: 0; }
   .result-sill::before { top: -8px; height: 36px; mask-image: linear-gradient(180deg, #000 45%, transparent 100%); }
   .result-plate img { max-width: 100%; max-height: 135px; }
   .food-annotation .callout-leader { --run: 24px; top: calc(50% - 12px); }
@@ -502,14 +521,12 @@ a:focus-visible {
   .result-outro { padding-top: 6px; }
   .result-outro::before { inset: -12px -6px; }
   .result-verdict { font-size: 16px; line-height: 1.6; }
-  .result-note { margin-top: 8px; }
-  .result-actions { margin-top: 12px; }
 }
 
 @media (max-width: 767px) and (max-height: 680px) {
   .setup { padding-block-start: 68px; }
   .story-spread { padding-block-start: 24px; }
-  .result-board { padding-block-start: 64px; }
+  .result-board { padding-block-start: 52px; }
 }
 
 @media (max-width: 460px) {

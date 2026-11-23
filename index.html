@@ -26,7 +26,7 @@
     <main id="app">
       <section class="view cover" id="view-cover" aria-labelledby="cover-title">
         <div class="scene-layer cover-layer">
-          <img src="assets/scenes/late-autumn-focus.webp" alt="深秋的街角，窗灯映出店里清晰的桌椅，路人从模糊的近景走过" width="1672" height="941" fetchpriority="high" decoding="async">
+          <img src="assets/scenes/autumn-street-original.jpg" alt="秋日的阳光穿过街道上方的树冠，落在行驶的车辆和路面上" width="1280" height="2276" fetchpriority="high" decoding="async">
         </div>
         <div class="cover-layout page-width">
           <div class="cover-copy">
@@ -80,24 +80,28 @@
           <img id="result-scene" alt="" width="1440" height="960" decoding="async">
         </div>
         <div class="result-board page-width">
-          <div class="result-sill" aria-hidden="true"></div>
-          <div class="result-plate"><img id="result-plate" alt="" decoding="async"></div>
           <div class="result-annotation weather-annotation">
             <span class="callout-leader" aria-hidden="true"><i></i></span>
             <h2 class="annotation-label" id="result-weather" tabindex="-1"></h2>
             <p id="result-scene-note"></p>
           </div>
-          <div class="result-annotation food-annotation">
-            <span class="callout-leader" aria-hidden="true"><i></i></span>
-            <p id="result-food-note"></p>
+          <div class="result-sill" aria-hidden="true"></div>
+          <div class="result-serving">
+            <div class="result-plate"><img id="result-plate" alt="" decoding="async"></div>
+            <div class="result-annotation food-annotation">
+              <span class="callout-leader" aria-hidden="true"><i></i></span>
+              <p id="result-food-note"></p>
+            </div>
           </div>
           <div class="result-outro">
-            <p class="result-verdict" id="result-verdict"></p>
-            <p class="result-note">故事设定，供娱乐。</p>
-            <div class="result-actions">
-              <button type="button" class="button button-quiet" id="result-back-btn"><span aria-hidden="true">←</span> 上一幕</button>
-              <button type="button" class="button window-button" id="restart-btn">再来坐坐 <span class="action-arrow" aria-hidden="true">↗</span></button>
+            <div class="result-meta">
+              <p class="result-note">故事设定，供娱乐。</p>
+              <div class="result-actions">
+                <button type="button" class="button button-quiet result-restart" id="restart-btn">再来坐坐 <span class="action-arrow" aria-hidden="true">↗</span></button>
+                <button type="button" class="button button-quiet" id="result-back-btn"><span aria-hidden="true">←</span> 上一幕</button>
+              </div>
             </div>
+            <p class="result-verdict" id="result-verdict"></p>
           </div>
         </div>
       </section>
